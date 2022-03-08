@@ -28,10 +28,8 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     Route::get('notes', [NotesController::class, 'index']);
     Route::post('create', [NotesController::class, 'store']);
-    
-    //Route::get('edit/{id}/edit', [NotesController::class, 'edit']);
+    Route::get('note/{id}', [NotesController::class, 'get']);
     Route::put('update/{id}', [NotesController::class, 'update']);
-    
     Route::delete('delete/{id}', [NotesController::class, 'destroy']);
     
     //Route::post('rate', [RatesController::class, 'getRate']);

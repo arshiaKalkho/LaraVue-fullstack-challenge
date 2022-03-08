@@ -74,7 +74,21 @@ class NotesController extends Controller
 
 
     }
-
+    /**
+     * get the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function get($id){
+        try{
+            $note = Notes::find($id);
+            return response()->json(['note'=>$note],200);
+        }catch(Exception $err){
+            dd($err);
+        }
+        
+    }
     /**
      * Remove the specified resource from storage.
      *

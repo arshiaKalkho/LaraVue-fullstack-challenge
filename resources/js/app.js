@@ -3,6 +3,7 @@ import store from '~/store'
 import router from '~/router'
 import i18n from '~/plugins/i18n'
 import App from '~/components/App'
+import VueCookies from 'vue-cookies';//to allow for put req on laravel
 
 import '~/plugins'
 import '~/components'
@@ -16,3 +17,4 @@ new Vue({
   router,
   ...App
 })
+Vue.use(VueCookies);

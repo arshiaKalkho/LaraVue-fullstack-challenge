@@ -14,7 +14,16 @@ export const mutations = {
     }
 }
 export const getters ={
-    notes: state => state.notes
+    notes: state => state.notes,
+    noteById: (state) =>//not used
+        (id) =>{
+            console.log("called ")
+            return state.notes.forEach(el => {
+                if(el.id == id)
+                    return el
+            })
+            
+        }
 }
 
 export const actions ={
@@ -31,11 +40,14 @@ export const actions ={
 
     async updateNote({ dispatch }, payload) {
         
-        await axios.put(`/api/update/${payload.id}`,
-            payload ,{
+        await axios.put(`/api/update/${payload.id}`,{
+                'title':payload.title,
+                'content':payload.content,
+                'id':payload.id 
+        } ,{
                 headers:{
                     _method : "PUT",
-                    _Token : this.$cookies.get("XSRF-TOKEN")
+                    //_Token : payload.xsrftkn//spoofing put request because of laravel,it requires xsrftkn from cookies which is passed along from edit componenet
                 }
             }
             )
