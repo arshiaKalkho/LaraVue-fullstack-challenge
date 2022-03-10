@@ -15,15 +15,6 @@ export const mutations = {
 }
 export const getters ={
     notes: state => state.notes,
-    noteById: (state) =>//not used
-        (id) =>{
-            console.log("called ")
-            return state.notes.forEach(el => {
-                if(el.id == id)
-                    return el
-            })
-            
-        }
 }
 
 export const actions ={
